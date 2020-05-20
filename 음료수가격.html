@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음료수 가격 영수증</title>
+    <script>
+        var menu=["블랙커피", "헤이즐럿", "녹차라떼", "눈꽃빙수", "파인주스", "키위주스"];
+        var price=[3500, 3800, 3800, 4900, 5000, 5000];
+        var sum, quit, dc=0, total=0;
+        document.write("<pre>         주    문    서          </pre>");
+        document.write("<pre>--------------------------------</pre>");
+        document.write("<pre>MENU    QTY    UNIT        PRICE</pre>");
+        document.write("<pre>--------------------------------</pre>");
+        do{
+            code = parseInt(prompt("메뉴코드(1 ~ 6) : "));
+            qty = parseInt(prompt("주문 수량?" ));
+            quit = prompt("주문이 없나요? (Y/N) ");
+            sum = price[code-1] * qty;
+            total = total + sum;
+            document.write(memu[code-1] +leadingSpaces(qty, 6) 
+                +leadingSpaces(price[code-1], 10) +leadingSpaces(sum, 10) + "<br>");
+        } 
+        while (quit.toUpperCase() ! = "Y");
+        document.write("<pre>--------------------------------</pre>");
+        if(total > 10000)
+            dc = total * 0.1;
+        total = total - dc;
+        document.write("D/C&nbsp;&nbsp;" +leadingSpaces(dc, 30) + "<br>");
+        document.write("Total" +leadingSpaces(total, 30));
+        function leadingSpaces(n, digits){
+            var spaces = "";
+            n = n.toString();
+            if(n.length < digits){
+                for (var i = 0; i < (digits - n.length); i++) spaces += "&nbsp;&nbsp;";
+            }
+            return spaces + n;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
